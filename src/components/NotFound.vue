@@ -19,5 +19,9 @@
 </script>
 
 <style scoped>
-	
+.container {
+	font-size: 60px;
+	text-align: center;
+	line-height: 100vh;
+}
 </style>

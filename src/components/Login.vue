@@ -84,14 +84,14 @@ export default {
 				if (valid) {
 					let userName = this.ruleForm.userName;
 					let password = this.ruleForm.pass;
-					this.requestLogin(userName, password);
+					this.handleLogin(userName, password);
 				} else {
 					console.log("error submit!!");
 					return false;
 				}
 			});
 		},
-		requestLogin(name, pass) {
+		handleLogin(name, pass) {
 			this.$http.post('/management/api/login', {
 				account: name,
 				password: pass

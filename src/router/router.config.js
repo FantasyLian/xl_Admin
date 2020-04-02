@@ -39,7 +39,7 @@ import RedPacket from '@/components/statistics/RedPacket'
 
 const routes = [
     {
-        path: '/index',
+        path: '/',
         component: Index,
         redirect: 'ringtones/list',
         name: 'ringtones',
@@ -220,6 +220,11 @@ const routes = [
                 }
             }
         ]
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: Login
     },
     {
         path: '*',

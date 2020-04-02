@@ -1,11 +1,6 @@
 <template>
   	<nav>
-		<el-menu
-			default-active="2"
-			class="el-menu-vertical-demo"
-			@open="handleOpen"
-			@close="handleClose"
-		>
+		<el-menu @open="handleOpen" @close="handleClose">
       		<el-submenu index="1">
 				<template slot="title">
 					<span>铃声管理</span>
@@ -75,10 +70,10 @@ export default {
 	},
 	methods: {
 		handleOpen(key, keyPath) {
-		console.log(key, keyPath);
+			console.log(key, keyPath);
 		},
 		handleClose(key, keyPath) {
-		console.log(key, keyPath);
+			console.log(key, keyPath);
 		}
 	}
 };
@@ -113,6 +108,10 @@ nav .el-submenu .el-menu-item {
 	height: 40px;
 	line-height: 40px;
 	color: rgba(255, 255, 255, 1);
+}
+nav .el-submenu .el-menu-item.is-active {
+	color: #409eff;
+	background-color: #fff;
 }
 nav .el-submenu .el-menu-item:hover {
 	background-color: rgba(0, 0, 0, 0.3);
