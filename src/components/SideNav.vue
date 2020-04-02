@@ -26,12 +26,12 @@
 				<el-menu-item-group>
 					<el-menu-item index="1-1">用户列表</el-menu-item>
 					<el-menu-item index="1-2">系统用户</el-menu-item>
-					<el-menu-item index="1-1">用户投诉</el-menu-item>
-					<el-menu-item index="1-2">聊天记录</el-menu-item>
-					<el-menu-item index="1-1">流水账单</el-menu-item>
-					<el-menu-item index="1-2">问题用户</el-menu-item>
-					<el-menu-item index="1-1">历史用户</el-menu-item>
-					<el-menu-item index="1-2">自建用户</el-menu-item>
+					<el-menu-item index="1-3">用户投诉</el-menu-item>
+					<el-menu-item index="1-4">聊天记录</el-menu-item>
+					<el-menu-item index="1-5">流水账单</el-menu-item>
+					<el-menu-item index="1-6">问题用户</el-menu-item>
+					<el-menu-item index="1-7">历史用户</el-menu-item>
+					<el-menu-item index="1-8">自建用户</el-menu-item>
 				</el-menu-item-group>
 			</el-submenu>
 			<el-submenu index="3">
@@ -59,9 +59,9 @@
 				<el-menu-item-group>
 					<el-menu-item index="1-1">用户数据</el-menu-item>
 					<el-menu-item index="1-2">铃声数据</el-menu-item>
-					<el-menu-item index="1-1">财务统计</el-menu-item>
-                    <el-menu-item index="1-2">铃声类型</el-menu-item>
-					<el-menu-item index="1-1">红包发放金额</el-menu-item>
+					<el-menu-item index="1-3">财务统计</el-menu-item>
+                    <el-menu-item index="1-4">铃声类型</el-menu-item>
+					<el-menu-item index="1-5">红包发放金额</el-menu-item>
 				</el-menu-item-group>
 			</el-submenu>
     	</el-menu>
