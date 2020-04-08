@@ -1,74 +1,60 @@
 <template>
-  	<nav>
-		<el-menu @open="handleOpen" @close="handleClose">
-      		<el-submenu index="1">
+	<nav>
+		<el-menu @open="handleOpen" @close="handleClose" :default-active="onRoutes">
+			<el-submenu :index="String(index)" :key="index" v-for="(item, index) in items">
 				<template slot="title">
-					<span>铃声管理</span>
+					<span>{{item.perName}}</span>
 				</template>
 				<el-menu-item-group>
-					<el-menu-item index="1-1">炫铃列表</el-menu-item>
-					<el-menu-item index="1-2">炫铃类型</el-menu-item>
-					<el-menu-item index="1-3">审核理由</el-menu-item>
-					<el-menu-item index="1-4">铃声数量</el-menu-item>
-					<el-menu-item index="1-5">标签管理</el-menu-item>
-					<el-menu-item index="1-6">段子管理</el-menu-item>
-				</el-menu-item-group>
-      		</el-submenu>
-      		<el-submenu index="2">
-        		<template slot="title">
-          			<span>用户管理</span>
-        		</template>
-				<el-menu-item-group>
-					<el-menu-item index="1-1">用户列表</el-menu-item>
-					<el-menu-item index="1-2">系统用户</el-menu-item>
-					<el-menu-item index="1-3">用户投诉</el-menu-item>
-					<el-menu-item index="1-4">聊天记录</el-menu-item>
-					<el-menu-item index="1-5">流水账单</el-menu-item>
-					<el-menu-item index="1-6">问题用户</el-menu-item>
-					<el-menu-item index="1-7">历史用户</el-menu-item>
-					<el-menu-item index="1-8">自建用户</el-menu-item>
+					<el-menu-item :index="String(index)+String(idx)" v-for="(subs, idx) in item.subMenus" :key="idx">
+						<router-link to="">{{ subs.perName }}</router-link>
+					</el-menu-item>
 				</el-menu-item-group>
 			</el-submenu>
-			<el-submenu index="3">
-				<template slot="title">
-					<span>朋友圈管理</span>
-				</template>
-				<el-menu-item-group>
-					<el-menu-item index="1-1">动态管理</el-menu-item>
-					<el-menu-item index="1-2">用户反馈</el-menu-item>
-				</el-menu-item-group>
-			</el-submenu>
-			<el-submenu index="4">
-				<template slot="title">
-					<span>开发者管理</span>
-				</template>
-				<el-menu-item-group>
-					<el-menu-item index="1-1">通知类型</el-menu-item>
-					<el-menu-item index="1-2">短信通知</el-menu-item>
-				</el-menu-item-group>
-			</el-submenu>
-			<el-submenu index="5">
-				<template slot="title">
-					<span>统计管理</span>
-				</template>
-				<el-menu-item-group>
-					<el-menu-item index="1-1">用户数据</el-menu-item>
-					<el-menu-item index="1-2">铃声数据</el-menu-item>
-					<el-menu-item index="1-3">财务统计</el-menu-item>
-                    <el-menu-item index="1-4">铃声类型</el-menu-item>
-					<el-menu-item index="1-5">红包发放金额</el-menu-item>
-				</el-menu-item-group>
-			</el-submenu>
-    	</el-menu>
+		</el-menu>
   	</nav>
 </template>
 <script>
 export default {
-	name: "xl-sidenav",
+  	name: "xl-sidenav",
 	data() {
-		return {};
+		return {
+			items: [{
+				perId: 1,
+				perName: "",
+				subMenus: [{
+					perId: 1,
+					perName: ""
+				}]
+			}]
+		};
+	},
+	computed: {
+		onRoutes () {
+			// 当前激活菜单的 index
+			let index = this.$route.path.replace('/', '')
+			let title = this.$route.meta.title
+			// 改变浏览器title
+			document.title = title
+			return index
+		}
+	},
+	mounted() {
+		this.getMenuItem();
 	},
 	methods: {
+		getMenuItem() {
+			this.$http.get("static/api/menu.json").then(res => {
+				const _data = res.data;
+				if (_data.code === 200) {
+					this.items = _data.result;
+					console.log(this.items)
+				}
+			}).catch(err => {
+				console.log(err);
+			});
+		},
+
 		handleOpen(key, keyPath) {
 			console.log(key, keyPath);
 		},
@@ -104,14 +90,15 @@ nav .el-menu-item-group > ul {
 nav .el-submenu__title:hover {
   	background-color: #4e5465;
 }
-nav .el-submenu .el-menu-item {
+nav .el-submenu .el-menu-item > a {
 	height: 40px;
 	line-height: 40px;
 	color: rgba(255, 255, 255, 1);
+	text-decoration: none;
 }
 nav .el-submenu .el-menu-item.is-active {
-	color: #409eff;
-	background-color: #fff;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.3);
 }
 nav .el-submenu .el-menu-item:hover {
 	background-color: rgba(0, 0, 0, 0.3);
