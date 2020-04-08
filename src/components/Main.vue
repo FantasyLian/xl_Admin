@@ -1,6 +1,6 @@
 <template>
     <main>
-        页面内容
+        <router-view></router-view>
     </main>
 </template>
 <script>
