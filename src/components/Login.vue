@@ -44,7 +44,7 @@ export default {
 						callback();
 					}
 				}
-		}, 100);
+			}, 100);
 		};
 		const validatePass = (rule, value, callback) => {
 			if (value === "") {
