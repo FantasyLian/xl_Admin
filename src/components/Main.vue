@@ -25,4 +25,8 @@ main {
     bottom: 44px;
     left: 250px;
 }
+main > * {
+    text-align: center;
+    line-height: calc(100vh - 110px);
+}
 </style>

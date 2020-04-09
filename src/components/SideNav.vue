@@ -1,13 +1,13 @@
 <template>
 	<nav>
-		<el-menu @open="handleOpen" @close="handleClose" :default-active="onRoutes">
+		<el-menu @open="handleOpen" @close="handleClose" :default-active="onRoutes" :unique-opened="true">
 			<el-submenu :index="String(index)" :key="index" v-for="(item, index) in items">
 				<template slot="title">
 					<span>{{item.perName}}</span>
 				</template>
 				<el-menu-item-group>
-					<el-menu-item :index="String(index + idx)" v-for="(subs, idx) in item.subMenus" :key="idx">
-						<router-link to="{{}}">{{ subs.perName }}</router-link>
+					<el-menu-item :index="String(index) +'-'+ String(idx)" v-for="(subs, idx) in item.subMenus" :key="idx">
+						<router-link :to="`${ subs.accessUrl }`">{{ subs.perName }}</router-link>
 					</el-menu-item>
 				</el-menu-item-group>
 			</el-submenu>
@@ -40,7 +40,6 @@ export default {
 	},
 	mounted() {
 		this.getMenuItem();
-		console.log(this.$route.params)
 	},
 	methods: {
 		getMenuItem() {
@@ -48,7 +47,6 @@ export default {
 				const _data = res.data;
 				if (_data.code === 200) {
 					this.items = _data.result;
-					console.log(this.items)
 				}
 			}).catch(err => {
 				console.log(err);
@@ -61,6 +59,9 @@ export default {
 		handleClose(key, keyPath) {
 			console.log(key, keyPath);
 		}
+	},
+	watch: {
+		
 	}
 };
 </script>
