@@ -3,6 +3,7 @@
 	<section class="container">
 		<Header></Header>
 		<Sidenav></Sidenav>
+		<Panel></Panel>
 		<Footer></Footer>
 	</section>
 
@@ -12,12 +13,12 @@
 
 import Header from './Header';
 import Sidenav from './SideNav';
-// import Panel from './Main'
+import Panel from './Main'
 import Footer from './Footer'
 
 export default {
 	name: 'Index',
-	components: { Header, Sidenav, Footer },
+	components: { Header, Sidenav, Panel, Footer },
 	data () {
 		return {
 			user: {
