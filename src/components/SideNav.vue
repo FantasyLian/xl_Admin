@@ -6,8 +6,8 @@
 					<span>{{item.perName}}</span>
 				</template>
 				<el-menu-item-group>
-					<el-menu-item :index="String(index)+String(idx)" v-for="(subs, idx) in item.subMenus" :key="idx">
-						<router-link to="">{{ subs.perName }}</router-link>
+					<el-menu-item :index="String(index + idx)" v-for="(subs, idx) in item.subMenus" :key="idx">
+						<router-link to="{{}}">{{ subs.perName }}</router-link>
 					</el-menu-item>
 				</el-menu-item-group>
 			</el-submenu>
@@ -31,16 +31,16 @@ export default {
 	},
 	computed: {
 		onRoutes () {
-			// 当前激活菜单的 index
-			let index = this.$route.path.replace('/', '')
+			let path = this.$route.path.replace('/', '')
 			let title = this.$route.meta.title
 			// 改变浏览器title
 			document.title = title
-			return index
+			return path ? path : '/'
 		}
 	},
 	mounted() {
 		this.getMenuItem();
+		console.log(this.$route.params)
 	},
 	methods: {
 		getMenuItem() {
