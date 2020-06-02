@@ -91,11 +91,16 @@ nav .el-menu-item-group > ul {
 nav .el-submenu__title:hover {
   	background-color: #4e5465;
 }
+nav .el-submenu .el-menu-item {
+	padding: 0!important;
+}
 nav .el-submenu .el-menu-item > a {
-	height: 40px;
-	line-height: 40px;
+	display: block;
+	height: 50px;
+	line-height: 50px;
 	color: rgba(255, 255, 255, 1);
 	text-decoration: none;
+	padding-left: 40px;
 }
 nav .el-submenu .el-menu-item.is-active {
 	color: #fff;
